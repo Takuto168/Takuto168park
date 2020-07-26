@@ -177,7 +177,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         }
 
         /// <summary>
-        /// 指定した IEnumerable<T> からコピーされた要素を格納する LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した IEnumerable<KeyValuePair<TKey,TValue>> からコピーされた要素を格納する LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="collection">新しい LinkedDictionary<TKey,TValue> に要素をコピーする Enumerable<KeyValuePair<TKey,TValue>>。</param>
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection) : this(collection, null, null) { }
