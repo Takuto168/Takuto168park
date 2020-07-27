@@ -1,6 +1,3 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace System.Collections.Generic
@@ -13,76 +10,6 @@ namespace System.Collections.Generic
     /// <typeparam name="TValue">ディクショナリ内の値の型。</typeparam>
     public class LinkedDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        #region class
-
-        /// <summary>
-        /// エラーを管理します。
-        /// </summary>
-        private static class ExceptionCreater 
-        {
-            /// <summary>
-            /// 指定された引数が Null であることを示すエラーを作成します。
-            /// </summary>
-            /// <param name="argName">引数名。</param>
-            /// <returns>作成したエラー。</returns>
-            public static ArgumentNullException ArgumentNull(string argName) => new ArgumentNullException($@"値を Null にすることはできません。
-パラメーター名: {argName}");
-
-            /// <summary>
-            /// 指定されたキーが辞書内に存在しないことを示すエラーを作成します。
-            /// </summary>
-            /// <returns>作成したエラー。</returns>
-            public static KeyNotFoundException KeyNotFound() => new KeyNotFoundException("指定されたキーはディレクトリ内に存在しませんでした。");
-
-            /// <summary>
-            /// 指定されたキーが辞書内にすでに存在することを示すエラーを作成します。
-            /// </summary>
-            /// <returns>作成したエラー。</returns>
-            public static ArgumentException KeyOverlap() => new ArgumentException("同一のキーを含む項目が既に追加されています。");
-
-            /// <summary>
-            /// 指定された引数が負の値であることを示すエラーを作成します。
-            /// </summary>
-            /// <param name="argName">引数名。</param>
-            /// <returns>作成したエラー。</returns>
-            public static ArgumentOutOfRangeException ArgumentNegative(string argName) => new ArgumentOutOfRangeException($@"負の値ではない数値が必要です。
-パラメーター名: {argName}");
-
-            /// <summary>
-            /// 指定された引数が配列の下限を下回っていることを示すエラーを作成します。
-            /// </summary>
-            /// <param name="argName">引数名。</param>
-            /// <returns>作成したエラー。</returns>
-            public static ArgumentOutOfRangeException ArgumentOutOfRange(string argName) => new ArgumentOutOfRangeException($@"最初の次元で、数字が配列の下限を下回っています。
-パラメーター名: {argName}");
-
-            /// <summary>
-            /// 指定された引数によって配列の上限を超過していることを示すエラーを作成します。
-            /// </summary>
-            /// <returns>作成したエラー。</returns>
-            public static ArgumentException ArgumentOutLength() => new ArgumentException($@"ターゲット配列の長さが足りません。
-destIndex、長さ、および配列の最小値を確認してください。");
-
-        }
-
-        /// <summary>
-        /// KeyValuePair<TKey, TValue> のキーに対して、TKey型の既定の比較を行う IComparer。
-        /// </summary>
-        private class TKeyComparer : IComparer<KeyValuePair<TKey, TValue>>
-        {
-            public int Compare(KeyValuePair<TKey, TValue> x, KeyValuePair<TKey, TValue> y) => Comparer<TKey>.Default.Compare(x.Key, y.Key);
-        }
-
-        /// <summary>
-        /// KeyValuePair<TKey, TValue> の値に対して、TValue型の既定の比較を行う IComparer。
-        /// </summary>
-        private class TValueComparer : IComparer<KeyValuePair<TKey, TValue>>
-        {
-            public int Compare(KeyValuePair<TKey, TValue> x, KeyValuePair<TKey, TValue> y) => Comparer<TValue>.Default.Compare(x.Value, y.Value);
-        }
-
-        #endregion
-
         #region field
 
         /// <summary>
@@ -95,7 +22,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// </summary>
         private Dictionary<TValue, TKey> _valueToKeys;
 
-        #endregion
+        #endregion field
 
         #region constructer
 
@@ -137,7 +64,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
         public LinkedDictionary(int capacity, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue)
         {
-            if (capacity < 0) throw ExceptionCreater.ArgumentNegative(nameof(capacity));
+            if (capacity < 0) throw new ArgumentOutOfRangeException(nameof(capacity));
 
             this._keyToValues = new Dictionary<TKey, TValue>(capacity, comparerKey);
             this._valueToKeys = new Dictionary<TValue, TKey>(capacity, comparerValue);
@@ -172,7 +99,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
               this(dictionary != null ? dictionary.Count : 0, comparerKey, comparerValue)
         {
-            if (dictionary == null) throw ExceptionCreater.ArgumentNull(nameof(dictionary));
+            if (dictionary == null) throw new ArgumentNullException(nameof(dictionary));
             this.AddRange(dictionary);
         }
 
@@ -205,11 +132,11 @@ destIndex、長さ、および配列の最小値を確認してください。")
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
       this(collection != null ? collection.Count() : 0, comparerKey, comparerValue)
         {
-            if (collection == null) throw ExceptionCreater.ArgumentNull(nameof(collection));
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
             this.AddRange(collection);
         }
 
-        #endregion
+        #endregion constructer
 
         #region property
 
@@ -277,7 +204,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
             }
         }
 
-        #endregion
+        #endregion property
 
         #region method[get]
 
@@ -288,7 +215,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         public TValue GetValue(TKey key)
         {
             if (this.TryGetValue(key, out var value)) return value;
-            throw ExceptionCreater.KeyNotFound();
+            throw new KeyNotFoundException();
         }
 
         /// <summary>
@@ -298,7 +225,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         public TKey GetKey(TValue value)
         {
             if (this.TryGetKey(value, out var key)) return key;
-            throw ExceptionCreater.KeyNotFound();
+            throw new KeyNotFoundException();
         }
 
         /// <summary>
@@ -369,7 +296,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <returns>キーが見つかった場合は指定された値に関連付けられたキー。見つからなかった場合は TKey 型の既定値。</returns>
         public TKey GetKeyOrAddDefault(TValue value) => this.GetKeyOrAdd(value, default(TKey));
 
-        #endregion
+        #endregion method[get]
 
         #region method[set]
 
@@ -380,7 +307,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="value">設定する値。</param>
         public void SetValue(TKey key, TValue value)
         {
-            if (!this.TrySetValue(key, value)) throw ExceptionCreater.KeyNotFound();
+            if (!this.TrySetValue(key, value)) throw new KeyNotFoundException();
         }
 
         /// <summary>
@@ -390,7 +317,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="key">設定するキー。</param>
         public void SetKey(TValue value, TKey key)
         {
-            if (!this.TrySetKey(value, key)) throw ExceptionCreater.KeyNotFound();
+            if (!this.TrySetKey(value, key)) throw new KeyNotFoundException();
         }
 
         /// <summary>
@@ -436,7 +363,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// </summary>
         /// <param name="key">設定する値のキー。</param>
         /// <param name="value">設定する値。</param>
-        public void SetValueOrAdd(TKey key, TValue value) 
+        public void SetValueOrAdd(TKey key, TValue value)
         {
             if (!this.TrySetValue(key, value)) this.Add(key, value);
         }
@@ -446,7 +373,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// </summary>
         /// <param name="key">設定するキーの値。</param>
         /// <param name="value">設定するキー。</param>
-        public void SetKeyOrAdd(TValue value, TKey key) 
+        public void SetKeyOrAdd(TValue value, TKey key)
         {
             if (!this.TrySetKey(value, key)) this.Add(key, value);
         }
@@ -463,7 +390,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="value">設定する値のキー。</param>
         public void SeKeyOrAddDefault(TValue value) => this.SetValueOrAdd(default(TKey), value);
 
-        #endregion
+        #endregion method[set]
 
         #region method[add]
 
@@ -474,7 +401,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="value">追加する要素の値。</param>
         public void Add(TKey key, TValue value)
         {
-            if (!this.TryAdd(key, value)) throw ExceptionCreater.KeyOverlap();
+            if (!this.TryAdd(key, value)) throw new ArgumentException();
         }
 
         /// <summary>
@@ -497,8 +424,8 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <returns>キー/値ペアが LinkedDictionary<TKey,TValue> に追加された場合は true、それ以外の場合は false。</returns>
         public bool TryAdd(TKey key, TValue value)
         {
-            if (key == null) throw ExceptionCreater.ArgumentNull(nameof(key));
-            if (value == null) throw ExceptionCreater.ArgumentNull(nameof(value));
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (value == null) throw new ArgumentNullException(nameof(value));
             if (this._keyToValues.ContainsKey(key) || this._valueToKeys.ContainsKey(value)) return false;
             this._keyToValues.Add(key, value);
             this._valueToKeys.Add(value, key);
@@ -523,15 +450,21 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// 指定した KeyValuePair<TKey, TValue> のコレクションを追加します。
         /// </summary>
         /// <param name="collection">追加する  KeyValuePair<TKey, TValue> のコレクション。</param>
-        public void AddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection) => collection.ForEach(item => this.Add(item));
+        public void AddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection)
+        {
+            foreach (var item in collection) this.Add(item);
+        }
 
         /// <summary>
         /// 指定した KeyValuePair<TKey, TValue> のコレクションのうち、キーと値が重複しないもののみを追加します。
         /// </summary>
         /// <param name="collection">追加する  KeyValuePair<TKey, TValue> のコレクション。</param>
-        public void TryAddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection) => collection.ForEach(item => this.TryAdd(item));
+        public void TryAddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection)
+        {
+            foreach (var item in collection) this.TryAdd(item);
+        }
 
-        #endregion
+        #endregion method[add]
 
         #region method[remove]
 
@@ -615,7 +548,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="value">削除する要素の値。</param>
         /// <param name="key">削除する要素のキー。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
-        public bool RemoveByValue(TValue value, out TKey key) 
+        public bool RemoveByValue(TValue value, out TKey key)
         {
             if (this._valueToKeys.ContainsKey(value) && this._keyToValues.ContainsKey(this._valueToKeys[value]))
             {
@@ -624,7 +557,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
                 this._keyToValues.Remove(key);
                 return true;
             }
-            else 
+            else
             {
                 key = default(TKey);
                 return false;
@@ -638,7 +571,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
         public bool Remove(KeyValuePair<TKey, TValue> item) => this._keyToValues.ContainsKey(item.Key) && this._keyToValues[item.Key].Equals(item.Value) && this.Remove(item.Key);
 
-        #endregion
+        #endregion method[remove]
 
         #region method[determinate]
 
@@ -663,7 +596,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <returns></returns>
         public bool Contains(KeyValuePair<TKey, TValue> item) => this._keyToValues.ContainsKey(item.Key) && this._keyToValues[item.Key].Equals(item.Value);
 
-        #endregion
+        #endregion method[determinate]
 
         #region method [IEnumerator]
 
@@ -679,7 +612,7 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <returns>コレクションの反復処理に使用できる IEnumerator。</returns>
         IEnumerator IEnumerable.GetEnumerator() => this._keyToValues.GetEnumerator();
 
-        #endregion
+        #endregion method [IEnumerator]
 
         #region method[copy/convert]
 
@@ -690,10 +623,13 @@ destIndex、長さ、および配列の最小値を確認してください。")
         /// <param name="index">array 内のコピーの開始位置を示すインデックス。</param>
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int index)
         {
-            if (array == null) throw ExceptionCreater.ArgumentNull(nameof(array));
-            if (index < 0 || index > array.Length) throw ExceptionCreater.ArgumentOutOfRange(nameof(index));
-            if (array.Length - index < this.Count) throw ExceptionCreater.ArgumentOutLength();
-            this._keyToValues.ForEach(item => array[index++] = new KeyValuePair<TKey, TValue>(item.Key, item.Value));
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            if (index < 0 || index > array.Length) throw new ArgumentOutOfRangeException(nameof(index));
+            if (array.Length - index < this.Count) throw new ArgumentException();
+            foreach (var item in this._keyToValues)
+            {
+                array[index++] = new KeyValuePair<TKey, TValue>(item.Key, item.Value);
+            }
         }
 
         /// <summary>
@@ -714,53 +650,30 @@ destIndex、長さ、および配列の最小値を確認してください。")
         public LinkedDictionary<TKeyResult, TValue> SelectKey<TKeyResult>(Func<TKey, TKeyResult> keySelector)
             => new LinkedDictionary<TKeyResult, TValue>(this.KeyValuePairs.Select(item => new KeyValuePair<TKeyResult, TValue>(keySelector(item.Key), item.Value)));
 
-        #endregion
+        #endregion method[copy/convert]
 
         #region method[sort]
 
-        /// <summary>
-        /// 指定した比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素を並べ替えます。
-        /// </summary>
-        /// <param name="comparer"></param>
-        public void Sort(IComparer<KeyValuePair<TKey, TValue>> comparer)
+        ///// <summary>
+        ///// 要素のキーの既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をそのキーによって並べ替えます。
+        ///// </summary>
+        public void SortByKey() => this.Sort(item => item.Key);
+
+        ///// <summary>
+        ///// 要素の値の既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をその値によって並べ替えます。
+        ///// </summary>
+        public void SortByValue() => this.Sort(item => item.Value);
+
+        ///// <summary>
+        ///// 指定した変換デリゲートを使用して、LinkedDictionary<TKey,TValue> 全体内の要素をその値によって並べ替えます。
+        ///// </summary>
+        public void Sort<T>(Func<KeyValuePair<TKey, TValue>, T> Selecter)
         {
-            var collection = this.KeyValuePairs.ToArray();
-            Array.Sort(collection, comparer);
+            var collection = this.KeyValuePairs.OrderBy(Selecter).ToArray();
             this.Clear();
-            Array.ForEach(collection, item => this.Add(item));
+            this.AddRange(collection);
         }
 
-        /// <summary>
-        /// 要素のキーの既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をそのキーによって並べ替えます。
-        /// </summary>
-        public void SortByKey() => this.Sort(new TKeyComparer());
-
-        /// <summary>
-        /// 要素の値の既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をその値によって並べ替えます。
-        /// </summary>
-        public void SortByValue() => this.Sort(new TValueComparer());
-
-        #endregion
-
+        #endregion method[sort]
     }
-
-    /// <summary>
-    /// IEnumerable<T> の拡張メソッド
-    /// </summary>
-    //public static class IEnumerableExtensions 
-    //{
-    //    /// <summary>
-    //    /// IEnumerable<T> の各要素に対して、指定された処理を実行します。
-    //    /// </summary>
-    //    /// <param name="items">各要素に対して処理を実行する IEnumerable<T>。</param>
-    //    /// <param name="action">IEnumerable<T> の各要素に対して実行する Action<T> デリゲート。</param>
-    //    public static void ForEach<T>(this IEnumerable<T> items, Action<T> action) 
-    //    {
-    //        foreach (var item in items)
-    //        {
-    //            action(item);
-    //        }
-    //    }
-    //}
-
 }
