@@ -594,7 +594,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="item">検索する KeyValuePair<TKey, TValue></param>
         /// <returns></returns>
-        public bool Contains(KeyValuePair<TKey, TValue> item) => this._keyToValues.ContainsKey(item.Key) && this._keyToValues[item.Key].Equals(item.Value);
+        public bool Contains(KeyValuePair<TKey, TValue> item) => this.KeyValuePairs.Contains(item);
 
         #endregion method[determinate]
 
