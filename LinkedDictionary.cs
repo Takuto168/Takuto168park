@@ -587,7 +587,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="value">検索する値。</param>
         /// <returns>指定された値を持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
-        public bool ContainsValue(TValue value) => this._keyToValues.ContainsValue(value);
+        public bool ContainsValue(TValue value) => this._valueToKeys.ContainsKey(value);
 
         /// <summary>
         /// 指定した KeyValuePair<TKey, TValue> が LinkedDictionary<TKey,TValue> に含まれるかどうかを判断します。
