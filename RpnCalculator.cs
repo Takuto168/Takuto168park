@@ -207,7 +207,8 @@ namespace RpnCalculator
         /// <param name="exp">式。</param>
         /// <param name="replaceParams">指定したトークン文字列を数値に置き換えるためのマッピング。</param>
         /// <returns>結果値。</returns>
-        public static N Calculate(string exp, IEnumerable<(string Key, N Value)> replaceParams) => CalculateInvoker(exp, replaceParams.ToDictionary(t => t.Key, t => t.Value));
+        public static N Calculate(string exp, IEnumerable<(string Key, N Value)> replaceParams)
+            => CalculateInvoker(exp, replaceParams.ToDictionary(t => t.Key, t => t.Value));
 
         /// <summary>
         /// 逆ポーランド記法の演算を行います。
@@ -230,7 +231,8 @@ namespace RpnCalculator
         /// <param name="exp">式。</param>
         /// <param name="replaceParams">指定したトークン文字列を数値に置き換えるためのマッピング。</param>
         /// <returns>結果値。</returns>
-        public static N Calculate(string exp, IEnumerable<N> replaceParams) => CalculateInvoker(exp, replaceParams.Select((Item, Index) => new { Item, Index }).ToDictionary(v => v.Index.ToString("{0}"), v => v.Item));
+        public static N Calculate(string exp, IEnumerable<N> replaceParams) 
+            => CalculateInvoker(exp, replaceParams.Select((Item, Index) => new { Item, Index }).ToDictionary(v => v.Index.ToString("{0}"), v => v.Item));
 
         /// <summary>
         /// 逆ポーランド記法の演算を行います。
