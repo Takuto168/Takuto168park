@@ -489,7 +489,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="key">削除する要素のキー。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
-        public bool RemoveByKey(TKey key) => this.RemoveByKey(key, out var value);
+        public bool RemoveByKey(TKey key) => this.RemoveByKey(key, out _);
 
         /// <summary>
         /// 指定した値を持つキーを <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
@@ -503,7 +503,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="value">削除する要素の値。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
-        public bool RemoveByValue(TValue value) => this.RemoveByValue(value, out var key);
+        public bool RemoveByValue(TValue value) => this.RemoveByValue(value, out _);
 
         /// <summary>
         /// 指定されたキーを持つ値を <see cref="LinkedDictionary{TKey, TValue}"/> から削除し、その要素の値を value パラメーターにコピーします。
