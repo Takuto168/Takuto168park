@@ -64,7 +64,7 @@ namespace System.Collections.Generic
         /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(int capacity, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue)
         {
-            if (capacity < 0) throw new ArgumentOutOfRangeException(nameof(capacity));
+            if (capacity < 0) ThrowArgumentOutOfRangeException(nameof(capacity));
 
             this._keyToValues = new Dictionary<TKey, TValue>(capacity, comparerKey);
             this._valueToKeys = new Dictionary<TValue, TKey>(capacity, comparerValue);
@@ -99,7 +99,7 @@ namespace System.Collections.Generic
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
               this(dictionary != null ? dictionary.Count : 0, comparerKey, comparerValue)
         {
-            if (dictionary == null) throw new ArgumentNullException(nameof(dictionary));
+            if (dictionary == null) ThrowArgumentNullException(nameof(dictionary));
             this.AddRange(dictionary);
         }
 
@@ -132,7 +132,7 @@ namespace System.Collections.Generic
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
       this(collection != null ? collection.Count() : 0, comparerKey, comparerValue)
         {
-            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            if (collection == null) ThrowArgumentNullException(nameof(collection));
             this.AddRange(collection);
         }
 
@@ -214,8 +214,11 @@ namespace System.Collections.Generic
         /// <param name="key">取得または設定する値のキー。</param>
         public TValue GetValue(TKey key)
         {
-            if (this.TryGetValue(key, out var value)) return value;
-            throw new KeyNotFoundException();
+            if (!this.TryGetValue(key, out var value))
+            {
+                ThrowKeyNotFoundException();
+            }
+            return value;
         }
 
         /// <summary>
@@ -224,8 +227,11 @@ namespace System.Collections.Generic
         /// <param name="value">取得または設定するキーの値。</param>
         public TKey GetKey(TValue value)
         {
-            if (this.TryGetKey(value, out var key)) return key;
-            throw new KeyNotFoundException();
+            if (!this.TryGetKey(value, out var key))
+            {
+                ThrowKeyNotFoundException();
+            }
+            return key;
         }
 
         /// <summary>
@@ -307,7 +313,10 @@ namespace System.Collections.Generic
         /// <param name="value">設定する値。</param>
         public void SetValue(TKey key, TValue value)
         {
-            if (!this.TrySetValue(key, value)) throw new KeyNotFoundException();
+            if (!this.TrySetValue(key, value))
+            {
+                ThrowKeyNotFoundException();
+            }
         }
 
         /// <summary>
@@ -317,7 +326,10 @@ namespace System.Collections.Generic
         /// <param name="key">設定するキー。</param>
         public void SetKey(TValue value, TKey key)
         {
-            if (!this.TrySetKey(value, key)) throw new KeyNotFoundException();
+            if (!this.TrySetKey(value, key))
+            {
+                ThrowKeyNotFoundException();
+            }
         }
 
         /// <summary>
@@ -401,7 +413,7 @@ namespace System.Collections.Generic
         /// <param name="value">追加する要素の値。</param>
         public void Add(TKey key, TValue value)
         {
-            if (!this.TryAdd(key, value)) throw new ArgumentException();
+            if (!this.TryAdd(key, value)) ThrowArgumentException();
         }
 
         /// <summary>
@@ -424,8 +436,8 @@ namespace System.Collections.Generic
         /// <returns>キー/値ペアが <see cref="LinkedDictionary{TKey, TValue}"/> に追加された場合は true、それ以外の場合は false。</returns>
         public bool TryAdd(TKey key, TValue value)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key));
-            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (key == null) ThrowArgumentNullException(nameof(key));
+            if (value == null) ThrowArgumentNullException(nameof(value));
             if (this._keyToValues.ContainsKey(key) || this._valueToKeys.ContainsKey(value)) return false;
             this._keyToValues.Add(key, value);
             this._valueToKeys.Add(value, key);
@@ -623,9 +635,9 @@ namespace System.Collections.Generic
         /// <param name="index">array 内のコピーの開始位置を示すインデックス。</param>
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int index)
         {
-            if (array == null) throw new ArgumentNullException(nameof(array));
-            if (index < 0 || index > array.Length) throw new ArgumentOutOfRangeException(nameof(index));
-            if (array.Length - index < this.Count) throw new ArgumentException();
+            if (array == null) ThrowArgumentNullException(nameof(array));
+            if (index < 0 || index > array.Length) ThrowArgumentOutOfRangeException(nameof(index));
+            if (array.Length - index < this.Count) ThrowArgumentException();
             foreach (var item in this._keyToValues)
             {
                 array[index++] = new KeyValuePair<TKey, TValue>(item.Key, item.Value);
@@ -675,5 +687,46 @@ namespace System.Collections.Generic
         }
 
         #endregion method[sort]
+
+        #region method[throw]
+
+        /// <summary>
+        /// <para><see cref="ArgumentOutOfRangeException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        /// <param name="paramName"><see cref="ArgumentOutOfRangeException"/>の原因となった引数の名前。</param>
+        private static void ThrowArgumentOutOfRangeException(string paramName)
+        {
+            throw new ArgumentOutOfRangeException(paramName);
+        }
+
+        /// <summary>
+        /// <para><see cref="ArgumentException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowArgumentException()
+        {
+            throw new ArgumentException();
+        }
+
+        /// <summary>
+        /// <para><see cref="ArgumentNullException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowArgumentNullException(string paramName)
+        {
+            throw new ArgumentNullException(paramName);
+        }
+
+        /// <summary>
+        /// <para><see cref="KeyNotFoundException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowKeyNotFoundException()
+        {
+            throw new KeyNotFoundException();
+        }
+
+        #endregion
     }
 }

@@ -176,7 +176,7 @@ namespace RpnCalculator
         /// </summary>
         static RpnCalculator()
         {
-            if (!_availableTypes.Contains(typeof(N))) throw new NotSupportedException();
+            if (!_availableTypes.Contains(typeof(N))) ThrowNotSupportedException();
         }
 
         /// <summary>
@@ -250,6 +250,15 @@ namespace RpnCalculator
             }
 
             return stack.Pop().Value;
+        }
+
+        /// <summary>
+        /// <para><see cref="NotSupportedException"/>を投げる。</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowNotSupportedException()
+        {
+            throw new NotSupportedException();
         }
     }
 }
