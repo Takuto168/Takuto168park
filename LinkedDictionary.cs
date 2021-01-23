@@ -27,112 +27,112 @@ namespace System.Collections.Generic
         #region constructer
 
         /// <summary>
-        /// 空で、既定の初期量を備え、キーの型と値型の既定の等値比較子を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、既定の初期量を備え、キーの型と値型の既定の等値比較子を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public LinkedDictionary() : this(0, null, null) { }
 
         /// <summary>
-        /// 空で、指定した初期量を備え、キーの型と値型の既定の等値比較子を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、指定した初期量を備え、キーの型と値型の既定の等値比較子を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="capacity">LinkedDictionary<TKey,TValue> が格納できる要素数の初期値。</param>
+        /// <param name="capacity"><see cref="LinkedDictionary{TKey, TValue}"/> が格納できる要素数の初期値。</param>
         public LinkedDictionary(int capacity) : this(capacity, null, null) { }
 
         /// <summary>
-        /// 空で、既定の初期量を備え、指定した IEqualityComparer<TKey> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、既定の初期量を備え、指定した <see cref="IEqualityComparer{TKey}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEqualityComparer<TKey> comparerKey) : this(0, comparerKey, null) { }
 
         /// <summary>
-        /// 空で、既定の初期量を備え、指定した IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、既定の初期量を備え、指定した <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEqualityComparer<TValue> comparerValue) : this(0, null, comparerValue) { }
 
         /// <summary>
-        /// 空で、既定の初期量を備え、指定した IEqualityComparer<TKey> と IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、既定の初期量を備え、指定した <see cref="IEqualityComparer{TKey}"/> と <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) : this(0, comparerKey, comparerValue) { }
 
         /// <summary>
-        /// 空で、指定したの初期量を備え、指定した IEqualityComparer<TKey> と IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 空で、指定したの初期量を備え、指定した <see cref="IEqualityComparer{TKey}"/> と <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="capacity">LinkedDictionary<TKey,TValue> が格納できる要素数の初期値。</param>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="capacity"><see cref="LinkedDictionary{TKey, TValue}"/> が格納できる要素数の初期値。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(int capacity, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue)
         {
-            if (capacity < 0) throw new ArgumentOutOfRangeException(nameof(capacity));
+            if (capacity < 0) ThrowArgumentOutOfRangeException(nameof(capacity));
 
             this._keyToValues = new Dictionary<TKey, TValue>(capacity, comparerKey);
             this._valueToKeys = new Dictionary<TValue, TKey>(capacity, comparerValue);
         }
 
         /// <summary>
-        /// 指定した IDictionary<TKey,TValue> から要素をコピーして格納し、キー型と値型の既定の等値比較子を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IDictionary{TKey, TValue}"/> から要素をコピーして格納し、キー型と値型の既定の等値比較子を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="dictionary">新しい LinkedDictionary<TKey,TValue> に要素をコピーする IDictionary<TKey,TValue>。</param>
+        /// <param name="dictionary">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IDictionary{TKey, TValue}"/>。</param>
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary) : this(dictionary, null, null) { }
 
         /// <summary>
-        /// 指定した IDictionary<TKey,TValue> から要素をコピーして格納し、指定した IEqualityComparer<TKey> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IDictionary{TKey, TValue}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TKey}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="dictionary">新しい LinkedDictionary<TKey,TValue> に要素をコピーする IDictionary<TKey,TValue>。</param>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
+        /// <param name="dictionary">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IDictionary{TKey, TValue}"/>。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparerKey) : this(dictionary, comparerKey, null) { }
 
         /// <summary>
-        /// 指定した IDictionary<TKey,TValue> から要素をコピーして格納し、指定した IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IDictionary{TKey, TValue}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="dictionary">新しい LinkedDictionary<TKey,TValue> に要素をコピーする IDictionary<TKey,TValue>。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="dictionary">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IDictionary{TKey, TValue}"/>。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TValue> comparerValue) : this(dictionary, null, comparerValue) { }
 
         /// <summary>
-        /// 指定した IDictionary<TKey,TValue> から要素をコピーして格納し、指定した IEqualityComparer<TKey> と IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IDictionary{TKey, TValue}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TKey}"/> と <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="dictionary">新しい LinkedDictionary<TKey,TValue> に要素をコピーする IDictionary<TKey,TValue>。</param>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="dictionary">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IDictionary{TKey, TValue}"/>。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
               this(dictionary != null ? dictionary.Count : 0, comparerKey, comparerValue)
         {
-            if (dictionary == null) throw new ArgumentNullException(nameof(dictionary));
+            if (dictionary == null) ThrowArgumentNullException(nameof(dictionary));
             this.AddRange(dictionary);
         }
 
         /// <summary>
-        /// 指定した IEnumerable<KeyValuePair<TKey,TValue>> からコピーされた要素を格納する LinkedDictionary<TKey,TValue> クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/> からコピーされた要素を格納する <see cref="LinkedDictionary{TKey, TValue}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="collection">新しい LinkedDictionary<TKey,TValue> に要素をコピーする Enumerable<KeyValuePair<TKey,TValue>>。</param>
+        /// <param name="collection">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/>。</param>
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection) : this(collection, null, null) { }
 
         /// <summary>
-        /// 指定した IEnumerable<KeyValuePair<TKey,TValue>> から要素をコピーして格納し、指定した IEqualityComparer<TKey> を使用する、LinkedDictionary<TKey, TValue>クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TKey}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="collection">新しい LinkedDictionary<TKey,TValue> に要素をコピーする Enumerable<KeyValuePair<TKey,TValue>>。</param>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
+        /// <param name="collection">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/>。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey> comparerKey) : this(collection, comparerKey, null) { }
 
         /// <summary>
-        /// 指定した IEnumerable<KeyValuePair<TKey,TValue>> から要素をコピーして格納し、指定した IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey, TValue>クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="collection">新しい LinkedDictionary<TKey,TValue> に要素をコピーする Enumerable<KeyValuePair<TKey,TValue>>。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="collection">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/>。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TValue> comparerValue) : this(collection, null, comparerValue) { }
 
         /// <summary>
-        /// 指定した IEnumerable<KeyValuePair<TKey,TValue>> から要素をコピーして格納し、指定した IEqualityComparer<TKey> と IEqualityComparer<TValue> を使用する、LinkedDictionary<TKey, TValue>クラスの新しいインスタンスを初期化します。
+        /// 指定した <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/> から要素をコピーして格納し、指定した <see cref="IEqualityComparer{TKey}"/> と <see cref="IEqualityComparer{TValue}"/> を使用する、<see cref="LinkedDictionary{TKey, TValue}"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="collection">新しい LinkedDictionary<TKey,TValue> に要素をコピーする Enumerable<KeyValuePair<TKey,TValue>>。</param>
-        /// <param name="comparerKey">キーの比較時に使用する IEqualityComparer<TKey> 実装。キーの型の既定の EqualityComparer<TKey> を使用する場合は null。</param>
-        /// <param name="comparerValue">値の比較時に使用する IEqualityComparer<TValue> 実装。値の型の既定の EqualityComparer<TValue> を使用する場合は null。</param>
+        /// <param name="collection">新しい <see cref="LinkedDictionary{TKey, TValue}"/> に要素をコピーする <see cref="IEnumerable{KeyValuePair{TKey, TValue}}"/>。</param>
+        /// <param name="comparerKey">キーの比較時に使用する <see cref="IEqualityComparer{TKey}"/> 実装。キーの型の既定の <see cref="EqualityComparer{TKey}"/> を使用する場合は null。</param>
+        /// <param name="comparerValue">値の比較時に使用する <see cref="IEqualityComparer{TValue}"/> 実装。値の型の既定の <see cref="EqualityComparer{TValue}"/> を使用する場合は null。</param>
         public LinkedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection, IEqualityComparer<TKey> comparerKey, IEqualityComparer<TValue> comparerValue) :
       this(collection != null ? collection.Count() : 0, comparerKey, comparerValue)
         {
-            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            if (collection == null) ThrowArgumentNullException(nameof(collection));
             this.AddRange(collection);
         }
 
@@ -141,17 +141,17 @@ namespace System.Collections.Generic
         #region property
 
         /// <summary>
-        /// ディクショナリのキーが等しいかどうかを確認するために使用する IEqualityComparer<TKey> を取得します。
+        /// ディクショナリのキーが等しいかどうかを確認するために使用する <see cref="IEqualityComparer{TKey}"/> を取得します。
         /// </summary>
         public IEqualityComparer<TKey> ComparerKey => this._keyToValues.Comparer;
 
         /// <summary>
-        /// ディクショナリの値が等しいかどうかを確認するために使用する IEqualityComparer<TValue> を取得します。
+        /// ディクショナリの値が等しいかどうかを確認するために使用する <see cref="IEqualityComparer{TValue}"/> を取得します。
         /// </summary>
         public IEqualityComparer<TValue> ComparerValue => this._valueToKeys.Comparer;
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> に格納されているキー/値ペアの数を取得します。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> に格納されているキー/値ペアの数を取得します。
         /// </summary>
         public int Count => this._keyToValues.Count;
 
@@ -176,12 +176,12 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> 内のキーを格納しているコレクションを取得します。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> 内のキーを格納しているコレクションを取得します。
         /// </summary>
         public ICollection<TKey> Keys => this._keyToValues.Keys;
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> 内の値を格納しているコレクションを取得します。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> 内の値を格納しているコレクションを取得します。
         /// </summary>
         public ICollection<TValue> Values => this._keyToValues.Values;
 
@@ -191,7 +191,7 @@ namespace System.Collections.Generic
         public bool IsReadOnly => false;
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> 内のキー/値ペアのコレクションを取得します。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> 内のキー/値ペアのコレクションを取得します。
         /// </summary>
         public IEnumerable<KeyValuePair<TKey, TValue>> KeyValuePairs
         {
@@ -214,8 +214,11 @@ namespace System.Collections.Generic
         /// <param name="key">取得または設定する値のキー。</param>
         public TValue GetValue(TKey key)
         {
-            if (this.TryGetValue(key, out var value)) return value;
-            throw new KeyNotFoundException();
+            if (!this.TryGetValue(key, out var value))
+            {
+                ThrowKeyNotFoundException();
+            }
+            return value;
         }
 
         /// <summary>
@@ -224,8 +227,11 @@ namespace System.Collections.Generic
         /// <param name="value">取得または設定するキーの値。</param>
         public TKey GetKey(TValue value)
         {
-            if (this.TryGetKey(value, out var key)) return key;
-            throw new KeyNotFoundException();
+            if (!this.TryGetKey(value, out var key))
+            {
+                ThrowKeyNotFoundException();
+            }
+            return key;
         }
 
         /// <summary>
@@ -233,7 +239,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="key">取得する値のキー。</param>
         /// <param name="value">キーが見つかった場合は、指定したキーに関連付けられている値が格納されます。それ以外の場合は value パラメーターの型に対する既定の値。</param>
-        /// <returns>指定されたキーを持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定されたキーを持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool TryGetValue(TKey key, out TValue value) => this._keyToValues.TryGetValue(key, out value);
 
         /// <summary>
@@ -241,7 +247,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="value">取得するキーの値。</param>
         /// <param name="key">値が見つかった場合は、指定した値に関連付けられているキーが格納されます。それ以外の場合は key パラメーターの型に対する既定の値。</param>
-        /// <returns>指定された値を持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定された値を持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool TryGetKey(TValue value, out TKey key) => this._valueToKeys.TryGetValue(value, out key);
 
         /// <summary>
@@ -307,7 +313,10 @@ namespace System.Collections.Generic
         /// <param name="value">設定する値。</param>
         public void SetValue(TKey key, TValue value)
         {
-            if (!this.TrySetValue(key, value)) throw new KeyNotFoundException();
+            if (!this.TrySetValue(key, value))
+            {
+                ThrowKeyNotFoundException();
+            }
         }
 
         /// <summary>
@@ -317,7 +326,10 @@ namespace System.Collections.Generic
         /// <param name="key">設定するキー。</param>
         public void SetKey(TValue value, TKey key)
         {
-            if (!this.TrySetKey(value, key)) throw new KeyNotFoundException();
+            if (!this.TrySetKey(value, key))
+            {
+                ThrowKeyNotFoundException();
+            }
         }
 
         /// <summary>
@@ -325,7 +337,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="key">設定する値のキー。</param>
         /// <param name="value">設定する値。</param>
-        /// <returns>指定されたキーを持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定されたキーを持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool TrySetValue(TKey key, TValue value)
         {
             if (this._keyToValues.ContainsKey(key))
@@ -344,7 +356,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="value">設定するキーの値。</param>
         /// <param name="key">設定するキー。</param>
-        /// <returns>指定された値を持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定された値を持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool TrySetKey(TValue value, TKey key)
         {
             if (this._valueToKeys.ContainsKey(value))
@@ -395,37 +407,37 @@ namespace System.Collections.Generic
         #region method[add]
 
         /// <summary>
-        /// 指定されたキーと値を LinkedDictionary<TKey,TValue> に追加します。
+        /// 指定されたキーと値を <see cref="LinkedDictionary{TKey, TValue}"/> に追加します。
         /// </summary>
         /// <param name="key">追加する要素のキー。</param>
         /// <param name="value">追加する要素の値。</param>
         public void Add(TKey key, TValue value)
         {
-            if (!this.TryAdd(key, value)) throw new ArgumentException();
+            if (!this.TryAdd(key, value)) ThrowArgumentException();
         }
 
         /// <summary>
-        /// 指定された KeyValuePair<TKey, TValue> を LinkedDictionary<TKey,TValue> に追加します。
+        /// 指定された <see cref="KeyValuePair{TKey, TValue}"/> を <see cref="LinkedDictionary{TKey, TValue}"/> に追加します。
         /// </summary>
-        /// <param name="item">追加する KeyValuePair<TKey, TValue>。</param>
+        /// <param name="item">追加する <see cref="KeyValuePair{TKey, TValue}"/>。</param>
         public void Add(KeyValuePair<TKey, TValue> item) => this.Add(item.Key, item.Value);
 
         /// <summary>
-        /// 指定された Tuple<TKey, TValue> を LinkedDictionary<TKey,TValue> に追加します。
+        /// 指定された <see cref="ValueTuple{TKey, TValue}"/> を <see cref="LinkedDictionary{TKey, TValue}"/> に追加します。
         /// </summary>
-        /// <param name="item">追加する Tuple<TKey, TValue>。</param>
+        /// <param name="item">追加する <see cref="ValueTuple{TKey, TValue}"/>。</param>
         public void Add((TKey Key, TValue Value) item) => this.Add(item.Key, item.Value);
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> に対して、指定されたキーと値の追加を試みます。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> に対して、指定されたキーと値の追加を試みます。
         /// </summary>
         /// <param name="key">追加する要素のキー。</param>
         /// <param name="value">追加する要素の値。</param>
-        /// <returns>キー/値ペアが LinkedDictionary<TKey,TValue> に追加された場合は true、それ以外の場合は false。</returns>
+        /// <returns>キー/値ペアが <see cref="LinkedDictionary{TKey, TValue}"/> に追加された場合は true、それ以外の場合は false。</returns>
         public bool TryAdd(TKey key, TValue value)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key));
-            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (key == null) ThrowArgumentNullException(nameof(key));
+            if (value == null) ThrowArgumentNullException(nameof(value));
             if (this._keyToValues.ContainsKey(key) || this._valueToKeys.ContainsKey(value)) return false;
             this._keyToValues.Add(key, value);
             this._valueToKeys.Add(value, key);
@@ -433,32 +445,32 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> に対して、指定された KeyValuePair<TKey, TValue> の追加を試みます。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> に対して、指定された <see cref="KeyValuePair{TKey, TValue}"/> の追加を試みます。
         /// </summary>
-        /// <param name="item">追加する KeyValuePair<TKey, TValue>。</param>
+        /// <param name="item">追加する <see cref="KeyValuePair{TKey, TValue}"/>。</param>
         /// <returns></returns>
         public bool TryAdd(KeyValuePair<TKey, TValue> item) => this.TryAdd(item.Key, item.Value);
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> に対して、指定された Tuple<TKey, TValue> の追加を試みます。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> に対して、指定された <see cref="ValueTuple{TKey, TValue}"/> の追加を試みます。
         /// </summary>
-        /// <param name="item">追加する Tuple<TKey, TValue>。</param>
+        /// <param name="item">追加する <see cref="ValueTuple{TKey, TValue}"/>。</param>
         /// <returns></returns>
         public bool TryAdd((TKey Key, TValue Value) item) => this.TryAdd(item.Key, item.Value);
 
         /// <summary>
-        /// 指定した KeyValuePair<TKey, TValue> のコレクションを追加します。
+        /// 指定した <see cref="KeyValuePair{TKey, TValue}"/> のコレクションを追加します。
         /// </summary>
-        /// <param name="collection">追加する  KeyValuePair<TKey, TValue> のコレクション。</param>
+        /// <param name="collection">追加する  <see cref="KeyValuePair{TKey, TValue}"/> のコレクション。</param>
         public void AddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection)
         {
             foreach (var item in collection) this.Add(item);
         }
 
         /// <summary>
-        /// 指定した KeyValuePair<TKey, TValue> のコレクションのうち、キーと値が重複しないもののみを追加します。
+        /// 指定した <see cref="KeyValuePair{TKey, TValue}"/> のコレクションのうち、キーと値が重複しないもののみを追加します。
         /// </summary>
-        /// <param name="collection">追加する  KeyValuePair<TKey, TValue> のコレクション。</param>
+        /// <param name="collection">追加する  <see cref="KeyValuePair{TKey, TValue}"/> のコレクション。</param>
         public void TryAddRange(IEnumerable<KeyValuePair<TKey, TValue>> collection)
         {
             foreach (var item in collection) this.TryAdd(item);
@@ -469,7 +481,7 @@ namespace System.Collections.Generic
         #region method[remove]
 
         /// <summary>
-        /// LinkedDictionary<TKey,TValue> からすべてのキーと値を削除します。
+        /// <see cref="LinkedDictionary{TKey, TValue}"/> からすべてのキーと値を削除します。
         /// </summary>
         public void Clear()
         {
@@ -478,35 +490,35 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// 指定したキーを持つ値を LinkedDictionary<TKey,TValue> から削除します。
+        /// 指定したキーを持つ値を <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
         /// </summary>
         /// <param name="key">削除する要素のキー。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
         public bool Remove(TKey key) => this.RemoveByKey(key);
 
         /// <summary>
-        /// 指定したキーを持つ値を LinkedDictionary<TKey,TValue> から削除します。
+        /// 指定したキーを持つ値を <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
         /// </summary>
         /// <param name="key">削除する要素のキー。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
-        public bool RemoveByKey(TKey key) => this.RemoveByKey(key, out var value);
+        public bool RemoveByKey(TKey key) => this.RemoveByKey(key, out _);
 
         /// <summary>
-        /// 指定した値を持つキーを LinkedDictionary<TKey,TValue> から削除します。
+        /// 指定した値を持つキーを <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
         /// </summary>
         /// <param name="value">削除する要素の値。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
         public bool Remove(TValue value) => this.RemoveByValue(value);
 
         /// <summary>
-        /// 指定した値を持つキーを LinkedDictionary<TKey,TValue> から削除します。
+        /// 指定した値を持つキーを <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
         /// </summary>
         /// <param name="value">削除する要素の値。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
-        public bool RemoveByValue(TValue value) => this.RemoveByValue(value, out var key);
+        public bool RemoveByValue(TValue value) => this.RemoveByValue(value, out _);
 
         /// <summary>
-        /// 指定されたキーを持つ値を LinkedDictionary<TKey,TValue> から削除し、その要素の値を value パラメーターにコピーします。
+        /// 指定されたキーを持つ値を <see cref="LinkedDictionary{TKey, TValue}"/> から削除し、その要素の値を value パラメーターにコピーします。
         /// </summary>
         /// <param name="key">削除する要素のキー。</param>
         /// <param name="value">削除された要素の値。</param>
@@ -514,7 +526,7 @@ namespace System.Collections.Generic
         public bool Remove(TKey key, out TValue value) => this.RemoveByKey(key, out value);
 
         /// <summary>
-        /// 指定されたキーを持つ値を LinkedDictionary<TKey,TValue> から削除し、その要素の値を value パラメーターにコピーします。
+        /// 指定されたキーを持つ値を <see cref="LinkedDictionary{TKey, TValue}"/> から削除し、その要素の値を value パラメーターにコピーします。
         /// </summary>
         /// <param name="key">削除する要素のキー。</param>
         /// <param name="value">削除された要素の値。</param>
@@ -535,7 +547,7 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// 指定された値を持つキーを LinkedDictionary<TKey,TValue> から削除し、その要素のキーを key パラメーターにコピーします。
+        /// 指定された値を持つキーを <see cref="LinkedDictionary{TKey, TValue}"/> から削除し、その要素のキーを key パラメーターにコピーします。
         /// </summary>
         /// <param name="value">削除する要素の値。</param>
         /// <param name="key">削除する要素のキー。</param>
@@ -543,7 +555,7 @@ namespace System.Collections.Generic
         public bool Remove(TValue value, out TKey key) => this.RemoveByValue(value, out key);
 
         /// <summary>
-        /// 指定された値を持つキーを LinkedDictionary<TKey,TValue> から削除し、その要素のキーを key パラメーターにコピーします。
+        /// 指定された値を持つキーを <see cref="LinkedDictionary{TKey, TValue}"/> から削除し、その要素のキーを key パラメーターにコピーします。
         /// </summary>
         /// <param name="value">削除する要素の値。</param>
         /// <param name="key">削除する要素のキー。</param>
@@ -565,9 +577,9 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// 指定された KeyValuePair<TKey, TValue> を LinkedDictionary<TKey,TValue> から削除します。
+        /// 指定された <see cref="KeyValuePair{TKey, TValue}"/> を <see cref="LinkedDictionary{TKey, TValue}"/> から削除します。
         /// </summary>
-        /// <param name="item">削除する KeyValuePair<TKey, TValue>。</param>
+        /// <param name="item">削除する <see cref="KeyValuePair{TKey, TValue}"/>。</param>
         /// <returns>要素が見つかり削除された場合は true。それ以外の場合は false。</returns>
         public bool Remove(KeyValuePair<TKey, TValue> item) => this._keyToValues.ContainsKey(item.Key) && this._keyToValues[item.Key].Equals(item.Value) && this.Remove(item.Key);
 
@@ -576,23 +588,23 @@ namespace System.Collections.Generic
         #region method[determinate]
 
         /// <summary>
-        /// 指定したキーを持つ要素が LinkedDictionary<TKey,TValue> に含まれるかどうかを判断します。
+        /// 指定したキーを持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれるかどうかを判断します。
         /// </summary>
         /// <param name="key">検索するキー。</param>
-        /// <returns>指定されたキーを持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定されたキーを持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool ContainsKey(TKey key) => this._keyToValues.ContainsKey(key);
 
         /// <summary>
-        /// 指定した値を持つ要素が LinkedDictionary<TKey,TValue> に含まれるかどうかを判断します。
+        /// 指定した値を持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれるかどうかを判断します。
         /// </summary>
         /// <param name="value">検索する値。</param>
-        /// <returns>指定された値を持つ要素が LinkedDictionary<TKey,TValue> に含まれている場合は true、含まれていない場合は false。</returns>
+        /// <returns>指定された値を持つ要素が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれている場合は true、含まれていない場合は false。</returns>
         public bool ContainsValue(TValue value) => this._valueToKeys.ContainsKey(value);
 
         /// <summary>
-        /// 指定した KeyValuePair<TKey, TValue> が LinkedDictionary<TKey,TValue> に含まれるかどうかを判断します。
+        /// 指定した <see cref="KeyValuePair{TKey, TValue}"/> が <see cref="LinkedDictionary{TKey, TValue}"/> に含まれるかどうかを判断します。
         /// </summary>
-        /// <param name="item">検索する KeyValuePair<TKey, TValue></param>
+        /// <param name="item">検索する <see cref="KeyValuePair{TKey, TValue}"/></param>
         /// <returns></returns>
         public bool Contains(KeyValuePair<TKey, TValue> item) => this.KeyValuePairs.Contains(item);
 
@@ -617,15 +629,15 @@ namespace System.Collections.Generic
         #region method[copy/convert]
 
         /// <summary>
-        /// 指定した配列インデックスを開始位置として、配列に ICollection<T> の要素をコピーします。
+        /// 指定した配列インデックスを開始位置として、配列に <see cref="ICollection{T}"/> の要素をコピーします。
         /// </summary>
-        /// <param name="array">ICollection<T> から要素がコピーされる 1 次元の配列。 </param>
+        /// <param name="array"><see cref="ICollection{T}"/> から要素がコピーされる 1 次元の配列。 </param>
         /// <param name="index">array 内のコピーの開始位置を示すインデックス。</param>
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int index)
         {
-            if (array == null) throw new ArgumentNullException(nameof(array));
-            if (index < 0 || index > array.Length) throw new ArgumentOutOfRangeException(nameof(index));
-            if (array.Length - index < this.Count) throw new ArgumentException();
+            if (array == null) ThrowArgumentNullException(nameof(array));
+            if (index < 0 || index > array.Length) ThrowArgumentOutOfRangeException(nameof(index));
+            if (array.Length - index < this.Count) ThrowArgumentException();
             foreach (var item in this._keyToValues)
             {
                 array[index++] = new KeyValuePair<TKey, TValue>(item.Key, item.Value);
@@ -633,20 +645,20 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
-        /// シーケンスの各要素の値を Func<TValue, TValueResult>　によって新しいフォームに射影し、既存のキーと新しい値による LinkedDictionary<TKey, TValueResult> を生成します。
+        /// シーケンスの各要素の値を <see cref="Func{TValue, TValueResult}"/>　によって新しいフォームに射影し、既存のキーと新しい値による <see cref="LinkedDictionary{TKey, TValueResult}"/> を生成します。
         /// </summary>
         /// <typeparam name="TValueResult">変換後の要素の値の型。</typeparam>
         /// <param name="valueSelector">要素の値の変換を表すデリゲート。</param>
-        /// <returns>生成された LinkedDictionary<TKey, TValueResult>。</returns>
+        /// <returns>生成された <see cref="LinkedDictionary{TKey, TValueResult}"/>。</returns>
         public LinkedDictionary<TKey, TValueResult> SelectValue<TValueResult>(Func<TValue, TValueResult> valueSelector)
             => new LinkedDictionary<TKey, TValueResult>(this.KeyValuePairs.Select(item => new KeyValuePair<TKey, TValueResult>(item.Key, valueSelector(item.Value))));
 
         /// <summary>
-        /// シーケンスの各要素の値を Func<TKey, TKeyResult>　によって新しいフォームに射影し、新しいキーと既存の値による LinkedDictionary<TKeyResult, TValue> を生成します。
+        /// シーケンスの各要素の値を <see cref="Func{TKey, TKeyResult}"/>　によって新しいフォームに射影し、新しいキーと既存の値による <see cref="LinkedDictionary{TKeyResult, TValue}"/> を生成します。
         /// </summary>
         /// <typeparam name="TKeyResult">変換後の要素のキーの型。</typeparam>
         /// <param name="keySelector">要素のキーの変換を表すデリゲート。</param>
-        /// <returns>生成された LinkedDictionary<TKey, TValueResult>。</returns>
+        /// <returns>生成された <see cref="LinkedDictionary{TKey, TValueResult}"/>。</returns>
         public LinkedDictionary<TKeyResult, TValue> SelectKey<TKeyResult>(Func<TKey, TKeyResult> keySelector)
             => new LinkedDictionary<TKeyResult, TValue>(this.KeyValuePairs.Select(item => new KeyValuePair<TKeyResult, TValue>(keySelector(item.Key), item.Value)));
 
@@ -654,19 +666,19 @@ namespace System.Collections.Generic
 
         #region method[sort]
 
-        ///// <summary>
-        ///// 要素のキーの既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をそのキーによって並べ替えます。
-        ///// </summary>
+        /// <summary>
+        /// 要素のキーの既定の比較子を使用して、<see cref="LinkedDictionary{TKey, TValue}"/> 全体内の要素をそのキーによって並べ替えます。
+        /// </summary>
         public void SortByKey() => this.Sort(item => item.Key);
 
-        ///// <summary>
-        ///// 要素の値の既定の比較子を使用して、LinkedDictionary<TKey,TValue> 全体内の要素をその値によって並べ替えます。
-        ///// </summary>
+        /// <summary>
+        /// 要素の値の既定の比較子を使用して、<see cref="LinkedDictionary{TKey, TValue}"/> 全体内の要素をその値によって並べ替えます。
+        /// </summary>
         public void SortByValue() => this.Sort(item => item.Value);
 
-        ///// <summary>
-        ///// 指定した変換デリゲートを使用して、LinkedDictionary<TKey,TValue> 全体内の要素をその値によって並べ替えます。
-        ///// </summary>
+        /// <summary>
+        /// 指定した変換デリゲートを使用して、<see cref="LinkedDictionary{TKey, TValue}"/> 全体内の要素をその値によって並べ替えます。
+        /// </summary>
         public void Sort<T>(Func<KeyValuePair<TKey, TValue>, T> Selecter)
         {
             var collection = this.KeyValuePairs.OrderBy(Selecter).ToArray();
@@ -675,5 +687,46 @@ namespace System.Collections.Generic
         }
 
         #endregion method[sort]
+
+        #region method[throw]
+
+        /// <summary>
+        /// <para><see cref="ArgumentOutOfRangeException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        /// <param name="paramName"><see cref="ArgumentOutOfRangeException"/>の原因となった引数の名前。</param>
+        private static void ThrowArgumentOutOfRangeException(string paramName)
+        {
+            throw new ArgumentOutOfRangeException(paramName);
+        }
+
+        /// <summary>
+        /// <para><see cref="ArgumentException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowArgumentException()
+        {
+            throw new ArgumentException();
+        }
+
+        /// <summary>
+        /// <para><see cref="ArgumentNullException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowArgumentNullException(string paramName)
+        {
+            throw new ArgumentNullException(paramName);
+        }
+
+        /// <summary>
+        /// <para><see cref="KeyNotFoundException"/>を投げる</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowKeyNotFoundException()
+        {
+            throw new KeyNotFoundException();
+        }
+
+        #endregion
     }
 }

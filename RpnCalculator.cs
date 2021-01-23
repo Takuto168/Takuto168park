@@ -63,8 +63,8 @@ namespace RpnCalculator
             /// 数値の文字列形式を、それと等価なジェネリック数値型に変換します。 戻り値は、変換が成功したかどうかを示します。
             /// </summary>
             /// <param name="s">変換する数値を格納する文字列。</param>
-            /// <param name="result">変換が成功した場合、このメソッドが返されるときに、s に格納された数値と等価のジェネリック数値を格納します。変換に失敗した場合は 0 を格納します。</param>
-            /// <returns>s が正常に変換された場合は true。それ以外の場合は false。</returns>
+            /// <param name="result">変換が成功した場合、このメソッドが返されるときに、<paramref name="s"/> に格納された数値と等価のジェネリック数値を格納します。変換に失敗した場合は 0 を格納します。</param>
+            /// <returns><paramref name="s"/> が正常に変換された場合は true。それ以外の場合は false。</returns>
             public static bool TryParse(string s, out N result)
             {
                 if (_tryParseInvoker == null)
@@ -144,7 +144,7 @@ namespace RpnCalculator
 
             /// <summary>
             /// 2つのトークンに対してトークンの示す算術演算を行い、その結果から新たなトークンを作成します。
-            /// 引数は、Stack<T>から取り出されることを想定して順序が判定していることに留意してください。
+            /// 引数は、<see cref="Stack{N}"/> から取り出されることを想定して順序が判定していることに留意してください。
             /// </summary>
             /// <param name="d2">2つ目の数値。</param>
             /// <param name="d1">1つ目の数値。</param>
@@ -176,7 +176,7 @@ namespace RpnCalculator
         /// </summary>
         static RpnCalculator()
         {
-            if (!_availableTypes.Contains(typeof(N))) throw new NotSupportedException();
+            if (!_availableTypes.Contains(typeof(N))) ThrowNotSupportedException();
         }
 
         /// <summary>
@@ -250,6 +250,15 @@ namespace RpnCalculator
             }
 
             return stack.Pop().Value;
+        }
+
+        /// <summary>
+        /// <para><see cref="NotSupportedException"/>を投げる。</para>
+        /// <para>インライン化補助のためのメソッド</para>
+        /// </summary>
+        private static void ThrowNotSupportedException()
+        {
+            throw new NotSupportedException();
         }
     }
 }
