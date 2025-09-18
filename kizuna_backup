@@ -1,0 +1,23 @@
+<!--  -->
+<!-- フィルタ対象のテーブル -->
+<!-- <th>,<td>に「cmanFilterBtn」を定義するとフィルタボタンが付きます -->
+<!--  -->
+<table id="sampleTable">  <!--- テーブルのIDをJavaScriptに定義します --->
+  <tr>
+    <th>番号</th>
+    <th cmanFilterBtn>氏名</th>
+    <th cmanFilterBtn>年齢</th>
+    <th cmanFilterBtn>性別</th>
+    <th cmanFilterBtn>地域</th>
+    <th cmanFilterBtn>合計</th>
+  </tr>
+  <tr><td>A001</td><td>田中 実</td><td>40</td><td>男</td><td>東北</td><td>123</td></tr>
+  <tr><td>A002</td><td>鈴木 茂</td><td>50</td><td>男</td><td>関東</td><td>5,487</td></tr>
+  <tr><td>A003</td><td>佐藤 和子</td><td>66</td><td>女</td><td></td><td>41</td></tr>
+  <tr><td>A004</td><td>ＸＸ商事</td><td></td><td>法人</td><td>関東</td><td>1,156</td></tr>
+  <tr><td>A005</td><td>伊藤 博</td><td>40</td><td>男</td><td>関西</td><td>8</td></tr>
+  <tr><td>A006</td><td>鈴木 洋子</td><td>36</td><td>女</td><td></td><td>753</td></tr>
+  <tr><td>A007</td><td>鈴木 幸子</td><td>25</td><td>女</td><td>東北</td><td>45</td></tr>
+  <tr><td>A008</td><td>田中 博 </td><td>20</td><td>男</td><td>関西</td><td>87</td></tr>
+  <tr><td>A008</td><td>ＹＹ販売</td><td></td><td>法人</td><td>東海</td><td>2,694</td></tr>
+</table>
